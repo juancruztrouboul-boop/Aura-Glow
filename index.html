@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Glow - Revista de Belleza</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8e9e9;
+    color: #59434a;
+    text-align: center;
+}
+
+header {
+    padding: 22px;
+    background: #d99aaa;
+    color: white;
+}
+
+header h1 {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    margin: 5px;
+}
+
+header p {
+    letter-spacing: 3px;
+}
+
+.book {
+    width: 90%;
+    max-width: 650px;
+    height: 500px;
+    margin: 30px auto;
+    position: relative;
+    perspective: 1500px;
+}
+
+.page {
+    background: #fffaf5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px #b98c96;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.page.active {
+    display: flex;
+    animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0.5;
+        transform: rotateY(-12deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+.page h2 {
+    color: #c47e91;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    margin: 10px;
+}
+
+.page p {
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 480px;
+}
+
+.page img {
+    width: 85%;
+    max-width: 390px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 10px;
+}
+
+.page .number {
+    position: absolute;
+    bottom: 12px;
+    color: #b88c96;
+}
+
+.cover h1 {
+    font-size: 55px;
+    color: #c47e91;
+    font-family: Georgia, serif;
+}
+
+.cover img {
+    width: 90%;
+    height: 220px;
+}
+
+.buttons {
+    margin: 20px;
+}
+
+button {
+    background: #c47e91;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #a85e75;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #d99aaa;
+    color: white;
+    padding: 12px 10px;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+}
+@media (max-width: 600px) {
+    .book {
+        width: 94%;
+        height: 480px;
+    }
+
+    .page {
+        padding: 18px;
+    }
+
+    .page img {
+        height: 180px;
+        width: 95%;
+    }
+
+    .page h2 {
+        font-size: 24px;
+    }
+
+    .page p {
+        font-size: 14px;
+    }
+
+    .cover h1 {
+        font-size: 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Aura Glow</h1>
+    <p>REVISTA DIGITAL DE BELLEZA</p>
+</header>
+
+<div class="book">
+
+    <section class="page active cover">
+        <h1>Aura Glow</h1>
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800" alt="Belleza y maquillaje">
+        <h2>Tu belleza, tu esencia</h2>
+        <p>BEAUTY • STYLE • GLOW</p>
+        <span class="number">01</span>
+    </section>
+
+    <section class="page">
+        <h2>Bienvenidos</h2>
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800" alt="Productos de belleza">
+        <p>Bienvenidos a Aura Glow, un espacio dedicado a la belleza, el cuidado personal y las últimas tendencias.</p>
+        <span class="number">02</span>
+    </section>
+
+    <section class="page">
+        <h2>Índice</h2>
+        <p>03 - Maquillaje</p>
+        <p>04 - Cuidado facial</p>
+        <p>05 - Perfumes</p>
+        <p>06 - Cabello</p>
+        <p>07 - Uñas</p>
+        <p>08 - Consejos de belleza</p>
+        <span class="number">03</span>
+    </section>
+
+    <section class="page">
+        <h2>Maquillaje</h2>
+        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800" alt="Maquillaje">
+        <p>El maquillaje permite expresar nuestra personalidad y destacar nuestros rasgos.</p>
+        <span class="number">04</span>
+    </section>
+
+    <section class="page">
+        <h2>Productos de maquillaje</h2>
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800" alt="Cosméticos">
+        <p>Labiales: aportan color e hidratación.</p>
+        <p>Máscara de pestañas: destaca la mirada.</p>
+        <p>Base: ayuda a unificar el tono de la piel.</p>
+        <span class="number">05</span>
+    </section>
+
+    <section class="page">
+        <h2>Cuidado facial</h2>
+        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800" alt="Cuidado facial">
+        <p>Una buena rutina facial ayuda a mantener la piel limpia, hidratada y saludable.</p>
+        <span class="number">06</span>
+    </section>
+
+    <section class="page">
+        <h2>Rutina diaria</h2>
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800" alt="Rutina de cuidado facial">
+        <p>1. Limpiar el rostro.</p>
+        <p>2. Aplicar crema hidratante.</p>
+        <p>3. Usar protector solar.</p>
+        <span class="number">07</span>
+    </section>
+
+    <section class="page">
+        <h2>Perfumes</h2>
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800" alt="Perfume elegante">
+        <p>Las fragancias son una forma de expresar nuestro estilo y personalidad.</p>
+        <span class="number">08</span>
+    </section>
+
+    <section class="page">
+        <h2>Fragancias destacadas</h2>
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800" alt="Colección de perfumes">
+        <p>Florales: suaves y delicadas.</p>
+        <p>Frutales: frescas y juveniles.</p>
+        <p>Amaderadas: intensas y elegantes.</p>
+        <span class="number">09</span>
+    </section>
+
+    <section class="page">
+        <h2>Cuidado del cabello</h2>
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800" alt="Cabello cuidado">
+        <p>El cabello también necesita atención y cuidados.</p>
+        <p>Utilizá productos adecuados para tu tipo de cabello.</p>
+        <span class="number">10</span>
+    </section>
+
+    <section class="page">
+        <h2>Consejos para el cabello</h2>
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800" alt="Peinado">
+        <p>• Evitá el exceso de calor.</p>
+        <p>• Usá acondicionador.</p>
+        <p>• Mantené una buena hidratación.</p>
+        <span class="number">11</span>
+    </section>
+
+    <section class="page">
+        <h2>Uñas</h2>
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800" alt="Diseño de uñas">
+        <p>Las uñas son otro detalle importante del cuidado personal.</p>
+        <p>Podés elegir diseños simples, elegantes o coloridos.</p>
+        <span class="number">12</span>
+    </section>
+
+    <section class="page">
+        <h2>Tendencias de uñas</h2>
+        <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800" alt="Manicura">
+        <p>Los tonos nude, rosados y pastel son opciones delicadas y elegantes.</p>
+        <span class="number">13</span>
+    </section>
+
+    <section class="page">
+        <h2>Moda y estilo</h2>
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800" alt="Moda y estilo">
+        <p>La moda es una manera de mostrar quiénes somos.</p>
+        <p>Elegí prendas que representen tu personalidad.</p>
+        <span class="number">14</span>
+    </section>
+
+    <section class="page">
+        <h2>Accesorios</h2>
+        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=800" alt="Accesorios de moda">
+        <p>Los accesorios pueden transformar cualquier conjunto.</p>
+        <p>Collares, pulseras, anillos y aros completan tu estilo.</p>
+        <span class="number">15</span>
+    </section>
+
+    <section class="page">
+        <h2>Consejos de belleza</h2>
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800" alt="Bienestar y relajación">
+        <p>• Tomá suficiente agua.</p>
+        <p>• Descansá bien.</p>
+        <p>• Mantené una rutina de cuidado personal.</p>
+        <span class="number">16</span>
+    </section>
+
+    <section class="page">
+        <h2>Bienestar</h2>
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800" alt="Autocuidado">
+        <p>La belleza también está relacionada con sentirse bien con uno mismo.</p>
+        <p>Dedicarte tiempo es una forma de cuidarte.</p>
+        <span class="number">17</span>
+    </section>
+
+    <section class="page">
+        <h2>Novedades</h2>
+        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800" alt="Productos cosméticos">
+        <p>Descubrí nuevos productos, colores y tendencias del mundo de la belleza.</p>
+        <span class="number">18</span>
+    </section>
+
+    <section class="page">
+        <h2>Nuestra filosofía</h2>
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800" alt="Belleza natural">
+        <p>En Aura Glow creemos que cada persona tiene una belleza única.</p>
+        <p>La confianza y la autenticidad son lo más importante.</p>
+        <span class="number">19</span>
+    </section>
+
+    <section class="page">
+        <h2>¡Gracias por leernos!</h2>
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800" alt="Cosméticos de belleza">
+        <p>Aura Glow</p>
+        <p>Tu belleza, tu esencia.</p>
+        <p>Hasta la próxima edición.</p>
+        <span class="number">20</span>
+    </section>
+
+</div>
+
+<div class="buttons">
+    <button onclick="anterior()">❮ Anterior</button>
+    <button onclick="siguiente()">Siguiente ❯</button>
+</div>
+
+<footer>
+    <p>© 2026 Aura Glow - Revista Digital</p>
+</footer>
+
+<script>
+let paginaActual = 0;
+
+const paginas = document.querySelectorAll(".page");
+
+function mostrarPagina() {
+    paginas.forEach((pagina, indice) => {
+        pagina.classList.toggle("active", indice === paginaActual);
+    });
+}
+
+function siguiente() {
+    if (paginaActual < paginas.length - 1) {
+        paginaActual++;
+        mostrarPagina();
+    }
+}
+
+function anterior() {
+    if (paginaActual > 0) {
+        paginaActual--;
+        mostrarPagina();
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") siguiente();
+    if (event.key === "ArrowLeft") anterior();
+});
+</script>
+
+</body>
+</html>
