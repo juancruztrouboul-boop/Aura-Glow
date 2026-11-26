@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-T0KF1XQJHF');
-</script> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aura Glow - Revista de Belleza</title>
+
+<title>Aura Glow - Revista Digital de Belleza</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T0KF1XQJHF"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-T0KF1XQJHF');
+</script>
 
 <style>
 * {
@@ -23,6 +25,7 @@ body {
     background: #f8e9e9;
     color: #59434a;
     text-align: center;
+    padding-bottom: 65px;
 }
 
 header {
@@ -41,61 +44,112 @@ header p {
     letter-spacing: 3px;
 }
 
+/* REVISTA */
+
 .book {
-    width: 90%;
-    max-width: 650px;
-    height: 500px;
-    margin: 30px auto;
+    width: 94%;
+    max-width: 1000px;
+    height: 560px;
+    margin: 35px auto;
     position: relative;
-    perspective: 1500px;
+    perspective: 2000px;
+    background: #e8c4cc;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px #b98c96;
+    overflow: hidden;
+}
+
+.book::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: rgba(120, 70, 80, 0.18);
+    z-index: 5;
+    pointer-events: none;
 }
 
 .page {
     background: #fffaf5;
     position: absolute;
-    width: 100%;
+    width: 50%;
     height: 100%;
+    top: 0;
     padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px #b98c96;
     display: none;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 3px 12px #b98c96;
+}
+
+.page.left-page {
+    left: 0;
+    border-radius: 8px 0 0 8px;
+}
+
+.page.right-page {
+    right: 0;
+    border-radius: 0 8px 8px 0;
 }
 
 .page.active {
     display: flex;
-    animation: aparecer 0.5s ease;
 }
 
-@keyframes aparecer {
+.page.turn-forward {
+    display: flex;
+    z-index: 10;
+    transform-origin: left center;
+    animation: pasarAdelante 0.7s ease-in-out forwards;
+}
+
+.page.turn-backward {
+    display: flex;
+    z-index: 10;
+    transform-origin: right center;
+    animation: pasarAtras 0.7s ease-in-out forwards;
+}
+
+@keyframes pasarAdelante {
     from {
-        opacity: 0.5;
-        transform: rotateY(-12deg);
+        transform: rotateY(0deg);
     }
     to {
-        opacity: 1;
-        transform: rotateY(0);
+        transform: rotateY(-180deg);
     }
 }
+
+@keyframes pasarAtras {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+/* CONTENIDO */
 
 .page h2 {
     color: #c47e91;
     font-family: Georgia, serif;
-    font-size: 28px;
+    font-size: 26px;
     margin: 10px;
 }
 
 .page p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
     max-width: 480px;
 }
 
 .page img {
-    width: 85%;
+    width: 90%;
     max-width: 390px;
     height: 210px;
     object-fit: cover;
@@ -110,7 +164,7 @@ header p {
 }
 
 .cover h1 {
-    font-size: 55px;
+    font-size: 45px;
     color: #c47e91;
     font-family: Georgia, serif;
 }
@@ -119,6 +173,8 @@ header p {
     width: 90%;
     height: 220px;
 }
+
+/* BOTONES */
 
 .buttons {
     margin: 20px;
@@ -133,11 +189,21 @@ button {
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
+    transition: 0.3s;
 }
 
 button:hover {
     background: #a85e75;
+    transform: scale(1.05);
 }
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* PIE DE PAGINA */
 
 footer {
     position: fixed;
@@ -148,39 +214,55 @@ footer {
     color: white;
     padding: 12px 10px;
     text-align: center;
-    box-sizing: border-box;
     z-index: 1000;
 }
 
 footer p {
     margin: 0;
-    padding: 0;
 }
+
+/* CELULARES */
+
 @media (max-width: 600px) {
+    header h1 {
+        font-size: 30px;
+    }
+
     .book {
-        width: 94%;
+        width: 96%;
         height: 480px;
+        margin: 25px auto;
     }
 
     .page {
-        padding: 18px;
+        padding: 10px;
     }
 
     .page img {
-        height: 180px;
-        width: 95%;
+        height: 150px;
+        width: 96%;
     }
 
     .page h2 {
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .page p {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 1.4;
     }
 
     .cover h1 {
-        font-size: 40px;
+        font-size: 27px;
+    }
+
+    .cover img {
+        height: 160px;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 13px;
     }
 }
 </style>
@@ -193,9 +275,9 @@ footer p {
     <p>REVISTA DIGITAL DE BELLEZA</p>
 </header>
 
-<div class="book">
+<div class="book" id="book">
 
-    <section class="page active cover">
+    <section class="page cover">
         <h1>Aura Glow</h1>
         <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800" alt="Belleza y maquillaje">
         <h2>Tu belleza, tu esencia</h2>
@@ -246,7 +328,7 @@ footer p {
 
     <section class="page">
         <h2>Rutina diaria</h2>
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800" alt="Rutina de cuidado facial">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800" alt="Rutina facial">
         <p>1. Limpiar el rostro.</p>
         <p>2. Aplicar crema hidratante.</p>
         <p>3. Usar protector solar.</p>
@@ -311,7 +393,7 @@ footer p {
 
     <section class="page">
         <h2>Accesorios</h2>
-        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=800" alt="Accesorios de moda">
+        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=800" alt="Accesorios">
         <p>Los accesorios pueden transformar cualquier conjunto.</p>
         <p>Collares, pulseras, anillos y aros completan tu estilo.</p>
         <span class="number">15</span>
@@ -319,7 +401,7 @@ footer p {
 
     <section class="page">
         <h2>Consejos de belleza</h2>
-        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800" alt="Bienestar y relajación">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800" alt="Bienestar">
         <p>• Tomá suficiente agua.</p>
         <p>• Descansá bien.</p>
         <p>• Mantené una rutina de cuidado personal.</p>
@@ -351,7 +433,7 @@ footer p {
 
     <section class="page">
         <h2>¡Gracias por leernos!</h2>
-        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800" alt="Cosméticos de belleza">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800" alt="Cosméticos">
         <p>Aura Glow</p>
         <p>Tu belleza, tu esencia.</p>
         <p>Hasta la próxima edición.</p>
@@ -361,8 +443,8 @@ footer p {
 </div>
 
 <div class="buttons">
-    <button onclick="anterior()">❮ Anterior</button>
-    <button onclick="siguiente()">Siguiente ❯</button>
+    <button id="btnAnterior" onclick="anterior()">❮ Anterior</button>
+    <button id="btnSiguiente" onclick="siguiente()">Siguiente ❯</button>
 </div>
 
 <footer>
@@ -371,33 +453,99 @@ footer p {
 
 <script>
 let paginaActual = 0;
+let girando = false;
 
 const paginas = document.querySelectorAll(".page");
 
 function mostrarPagina() {
+
     paginas.forEach((pagina, indice) => {
-        pagina.classList.toggle("active", indice === paginaActual);
+
+        pagina.classList.remove(
+            "active",
+            "left-page",
+            "right-page",
+            "turn-forward",
+            "turn-backward"
+        );
+
+        if (indice === paginaActual) {
+            pagina.classList.add("left-page", "active");
+        }
+
+        if (indice === paginaActual + 1) {
+            pagina.classList.add("right-page", "active");
+        }
     });
+
+    document.getElementById("btnAnterior").disabled =
+        paginaActual === 0;
+
+    document.getElementById("btnSiguiente").disabled =
+        paginaActual >= paginas.length - 2;
 }
 
 function siguiente() {
-    if (paginaActual < paginas.length - 1) {
-        paginaActual++;
-        mostrarPagina();
+
+    if (girando || paginaActual >= paginas.length - 2) {
+        return;
     }
+
+    girando = true;
+
+    const pagina = paginas[paginaActual + 1];
+
+    pagina.classList.remove("active");
+    pagina.classList.add("right-page", "turn-forward");
+
+    setTimeout(() => {
+
+        paginaActual += 2;
+
+        mostrarPagina();
+
+        girando = false;
+
+    }, 700);
 }
 
 function anterior() {
-    if (paginaActual > 0) {
-        paginaActual--;
-        mostrarPagina();
+
+    if (girando || paginaActual <= 0) {
+        return;
     }
+
+    girando = true;
+
+    const pagina = paginas[paginaActual];
+
+    pagina.classList.remove("active");
+    pagina.classList.add("left-page", "turn-backward");
+
+    setTimeout(() => {
+
+        paginaActual -= 2;
+
+        mostrarPagina();
+
+        girando = false;
+
+    }, 700);
 }
 
 document.addEventListener("keydown", function(event) {
-    if (event.key === "ArrowRight") siguiente();
-    if (event.key === "ArrowLeft") anterior();
+
+    if (event.key === "ArrowRight") {
+        siguiente();
+    }
+
+    if (event.key === "ArrowLeft") {
+        anterior();
+    }
+
 });
+
+mostrarPagina();
 </script>
 
 </body>
