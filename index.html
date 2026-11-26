@@ -101,18 +101,58 @@ header p {
     display: flex;
 }
 
+/* EFECTO REALISTA DE PASAR PÁGINAS */
+
+.page {
+    transform-style: preserve-3d;
+    transition: none;
+    box-shadow: 0 2px 12px rgba(100, 50, 65, 0.15);
+}
+
 .page.turn-forward {
     display: flex;
-    z-index: 10;
+    z-index: 20;
     transform-origin: left center;
-    animation: pasarAdelante 0.7s ease-in-out forwards;
+    animation: pasarAdelante 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 .page.turn-backward {
     display: flex;
-    z-index: 10;
+    z-index: 20;
     transform-origin: right center;
-    animation: pasarAtras 0.7s ease-in-out forwards;
+    animation: pasarAtras 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes pasarAdelante {
+    0% {
+        transform: rotateY(0deg);
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    40% {
+        box-shadow: -15px 5px 25px rgba(0,0,0,0.2);
+    }
+
+    100% {
+        transform: rotateY(-180deg);
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    }
+}
+
+@keyframes pasarAtras {
+    0% {
+        transform: rotateY(0deg);
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    40% {
+        box-shadow: 15px 5px 25px rgba(0,0,0,0.2);
+    }
+
+    100% {
+        transform: rotateY(180deg);
+        box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    }
 }
 
 @keyframes pasarAdelante {
