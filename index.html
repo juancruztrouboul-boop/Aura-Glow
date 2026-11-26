@@ -44,7 +44,7 @@ header p {
     letter-spacing: 3px;
 }
 
-/* REVISTA */
+/* REVISTA DIGITAL */
 
 .book {
     width: 94%;
@@ -53,6 +53,7 @@ header p {
     margin: 35px auto;
     position: relative;
     perspective: 2000px;
+    transform-style: preserve-3d;
     background: #e8c4cc;
     border-radius: 10px;
     box-shadow: 0 12px 30px #b98c96;
@@ -83,8 +84,12 @@ header p {
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
+
     backface-visibility: hidden;
-    box-shadow: 0 3px 12px #b98c96;
+    transform-style: preserve-3d;
+    transition: none;
+
+    box-shadow: 0 2px 12px rgba(100, 50, 65, 0.15);
 }
 
 .page.left-page {
@@ -101,13 +106,7 @@ header p {
     display: flex;
 }
 
-/* EFECTO REALISTA DE PASAR PÁGINAS */
-
-.page {
-    transform-style: preserve-3d;
-    transition: none;
-    box-shadow: 0 2px 12px rgba(100, 50, 65, 0.15);
-}
+/* ANIMACIÓN HACIA ADELANTE */
 
 .page.turn-forward {
     display: flex;
@@ -116,12 +115,16 @@ header p {
     animation: pasarAdelante 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
+/* ANIMACIÓN HACIA ATRÁS */
+
 .page.turn-backward {
     display: flex;
     z-index: 20;
     transform-origin: right center;
     animation: pasarAtras 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
+
+/* GIRO REALISTA HACIA ADELANTE */
 
 @keyframes pasarAdelante {
     0% {
@@ -139,6 +142,8 @@ header p {
     }
 }
 
+/* GIRO REALISTA HACIA ATRÁS */
+
 @keyframes pasarAtras {
     0% {
         transform: rotateY(0deg);
@@ -155,8 +160,7 @@ header p {
     }
 }
 
-
-/* CONTENIDO */
+/* CONTENIDO DE LAS PÁGINAS */
 
 .page h2 {
     color: #c47e91;
@@ -226,7 +230,7 @@ button:disabled {
     transform: none;
 }
 
-/* PIE DE PAGINA */
+/* PIE DE PÁGINA */
 
 footer {
     position: fixed;
@@ -244,9 +248,10 @@ footer p {
     margin: 0;
 }
 
-/* CELULARES */
+/* DISEÑO PARA CELULARES */
 
 @media (max-width: 600px) {
+
     header h1 {
         font-size: 30px;
     }
@@ -465,6 +470,8 @@ footer p {
 
 </div>
 
+<!-- BOTONES DE NAVEGACIÓN -->
+
 <div class="buttons">
     <button id="btnAnterior" onclick="anterior()">❮ Anterior</button>
     <button id="btnSiguiente" onclick="siguiente()">Siguiente ❯</button>
@@ -508,6 +515,8 @@ function mostrarPagina() {
         paginaActual >= paginas.length - 2;
 }
 
+/* PASAR PÁGINA HACIA ADELANTE */
+
 function siguiente() {
 
     if (girando || paginaActual >= paginas.length - 2) {
@@ -529,8 +538,10 @@ function siguiente() {
 
         girando = false;
 
-    }, 700);
+    }, 1000);
 }
+
+/* PASAR PÁGINA HACIA ATRÁS */
 
 function anterior() {
 
@@ -553,8 +564,10 @@ function anterior() {
 
         girando = false;
 
-    }, 700);
+    }, 1000);
 }
+
+/* NAVEGACIÓN CON TECLADO */
 
 document.addEventListener("keydown", function(event) {
 
@@ -568,7 +581,10 @@ document.addEventListener("keydown", function(event) {
 
 });
 
+/* INICIAR REVISTA */
+
 mostrarPagina();
+
 </script>
 
 </body>
